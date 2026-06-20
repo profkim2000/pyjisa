@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fe7efb02.js";
+            window.path_to_searchindex_js = "searchindex-bc75719b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-e19b1524.js"></script>
+        <script src="toc-de2c0fc6.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -175,7 +175,651 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="ai로-만든-파이썬-프로그램들"><a class="header" href="#ai로-만든-파이썬-프로그램들">AI로 만든 파이썬 프로그램들</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="숫자맞추기-게임"><a class="header" href="#숫자맞추기-게임">숫자맞추기 게임</a></h1>
+<h2 id="gemini에게-물어보기"><a class="header" href="#gemini에게-물어보기">Gemini에게 물어보기</a></h2>
+<p><img src="samples/attachments/20260621023824.png" alt=""></p>
+<hr>
+<h2 id="gemini가-알려준-파이썬-코드"><a class="header" href="#gemini가-알려준-파이썬-코드">gemini가 알려준 파이썬 코드</a></h2>
+<pre><code class="language-python">import random
+
+def guess_the_number():
+    print("====================================")
+    print("🎮 1부터 100 사이의 숫자 맞추기 게임! 🎮")
+    print("====================================")
+    
+    # 1부터 100 사이의 무작위 숫자 생성
+    secret_number = random.randint(1, 100)
+    attempts = 0  # 시도 횟수 저장
+    
+    while True:
+        try:
+            # 사용자로부터 입력 받기
+            guess = int(input("1부터 100 사이의 숫자를 입력하세요: "))
+            attempts += 1
+            
+            # 입력값 범위 검증
+            if guess &lt; 1 or guess &gt; 100:
+                print("🚨 범위를 벗어났습니다! 1에서 100 사이의 숫자를 입력해주세요.")
+                continue
+                
+            # 숫자 비교
+            if guess &lt; secret_number:
+                print("🔼 Up! 더 큰 숫자입니다.")
+            elif guess &gt; secret_number:
+                print("🔽 Down! 더 작은 숫자입니다.")
+            else:
+                print(f"🎉 축하합니다! 정답을 맞추셨습니다! 🎉")
+                print(f"👉 총 시도 횟수: {attempts}번")
+                break
+                
+        except ValueError:
+            print("❌ 올바른 숫자를 입력해주세요.")
+
+# 게임 실행
+if __name__ == "__main__":
+    guess_the_number()
+</code></pre>
+<hr>
+<h2 id="실행-화면"><a class="header" href="#실행-화면">실행 화면</a></h2>
+<p><img src="samples/attachments/20260621032142.png" alt=""></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="좌표-변환"><a class="header" href="#좌표-변환">좌표 변환</a></h1>
+<h2 id="gemini에게-물어보기-1"><a class="header" href="#gemini에게-물어보기-1">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: espg:4326 좌표를 epsg:3857로 변환하는 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬에서 공간 데이터(좌표)의 좌표계를 변환할 때 가장 널리 쓰이는 라이브러리는 <code>pyproj</code>입니다.</p>
+<p>만약 라이브러리가 설치되어 있지 않다면, 터미널에 <code>pip install pyproj</code>를 입력해 먼저 설치해 주세요.</p>
+<hr>
+<h3 id="-epsg4326--epsg3857-변환-코드"><a class="header" href="#-epsg4326--epsg3857-변환-코드">🌐 EPSG:4326 ➔ EPSG:3857 변환 코드</a></h3>
+<p>위도·경도(EPSG:4326) 좌표를 미터 단위의 구면 메르카토르 프로젝션(EPSG:3857)으로 변환하는 코드입니다. 서울시청 좌표(위도 37.5665, 경도 126.9780)를 예시로 작성했습니다.</p>
+<pre><code class="language-python">from pyproj import Transformer
+
+def convert_4326_to_3857(lat, lon):
+    # Transformer 객체 생성
+    # always_xy=True 옵션을 주면 EPSG:4326 환경에서도 (경도, 위도) 순서로 입출력을 고정합니다.
+    transformer = Transformer.from_crs("epsg:4326", "epsg:3857", always_xy=True)
+    
+    # 변환 실행 (경도, 위도 순으로 입력)
+    x, y = transformer.transform(lon, lat)
+    
+    return x, y
+
+# 예시: 서울시청 좌표 (위도, 경도)
+seoul_lat = 37.5665
+seoul_lon = 126.9780
+
+x_3857, y_3857 = convert_4326_to_3857(seoul_lat, seoul_lon)
+
+print(print("--- 변환 결과 ---"))
+print(f"원본 EPSG:4326 (위도, 경도): ({seoul_lat}, {seoul_lon})")
+print(f"변환 EPSG:3857 (X, Y 미터): ({x_3857:.2f}, {y_3857:.2f})")
+
+</code></pre>
+<hr>
+<h3 id="-핵심-포인트-설명"><a class="header" href="#-핵심-포인트-설명">💡 핵심 포인트 설명</a></h3>
+<ul>
+<li><strong><code>always_xy=True</code> 설정이 중요한 이유</strong>:
+전통적으로 GIS에서 EPSG:4326은 <strong>(위도, 경도)</strong> 즉, (Y, X) 순서로 다루어집니다. 반면 EPSG:3857은 평면 좌표계라 <strong>(X, Y)</strong> 순서를 씁니다. 순서가 뒤바뀌는 혼란을 막기 위해 <code>always_xy=True</code>를 주면 <strong>두 좌표계 모두 (경도/X, 위도/Y) 순서로 통일</strong>되어 직관적으로 코딩할 수 있습니다.</li>
+<li><strong>대량의 데이터 변환</strong>:
+만약 리스트나 넘파이(Numpy) 배열 형태로 여러 개의 좌표를 한 번에 넣어도 <code>transformer.transform(lon_list, lat_list)</code> 방식으로 매우 빠르게 일괄 변환이 가능합니다.</li>
+</ul>
+<hr>
+<h2 id="실행-화면-1"><a class="header" href="#실행-화면-1">실행 화면</a></h2>
+<pre><code class="language-powershell">PS E:\test\pyjisa&gt; python transform.py
+Traceback (most recent call last):
+  File "E:\test\pyjisa\02.transform.py", line 1, in &lt;module&gt;
+    from pyproj import Transformer
+ModuleNotFoundError: No module named 'pyproj'
+</code></pre>
+<p>에러 발생. 맨 마지막 줄 “ModuleNotFoundError: No module named ‘pyproj’” 가 그 원인이다. “pyproj” 라는 이름의 라이브러리가 없기 때문.</p>
+<p>gemini가 대답 제일 첫 줄에 언급한 pyproj 라이브러리를 설치한다.</p>
+<pre><code>pip install proj
+</code></pre>
+<p>위 방법으로 라이브러리 설치하고 다시 실행하기</p>
+<pre><code class="language-powershell">PS E:\test\pyjisa&gt; pip install pyproj
+Collecting pyproj
+  Downloading pyproj-3.7.1-cp310-cp310-win_amd64.whl.metadata (31 kB)
+Collecting certifi (from pyproj)
+  Downloading certifi-2026.6.17-py3-none-any.whl.metadata (2.5 kB)
+Downloading pyproj-3.7.1-cp310-cp310-win_amd64.whl (6.3 MB)
+   ---------------------------------------- 6.3/6.3 MB 7.9 MB/s  0:00:00
+Downloading certifi-2026.6.17-py3-none-any.whl (133 kB)
+Installing collected packages: certifi, pyproj
+Successfully installed certifi-2026.6.17 pyproj-3.7.1
+
+
+
+PS E:\test\pyjisa&gt; python transform.py
+--- 변환 결과 ---
+None
+원본 EPSG:4326 (위도, 경도): (37.5665, 126.978)
+변환 EPSG:3857 (X, Y 미터): (14135126.30, 4518366.51)
+PS E:\test\pyjisa&gt;
+</code></pre>
+<p>프로그램이 이렇게 짧을 수 있는 건 pyproj에 이미 좌표변환과 관련된 모든 기능이 이미 만들어져 있기 때문.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="현재-시각"><a class="header" href="#현재-시각">현재 시각</a></h1>
+<h2 id="gemini에게-물어보기-2"><a class="header" href="#gemini에게-물어보기-2">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 1초에 한 번씩 현재 시간 보여주는 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬으로 <strong>1초에 한 번씩 현재 시간을 실시간으로 갱신하며 보여주는</strong> 코드입니다.</p>
+<p>화면이 아래로 계속 스크롤되지 않고, <strong>기존 줄을 깔끔하게 지우고 새로고침</strong>되도록 구현했습니다. (터미널이나 명령 프롬프트 환경에서 실행하시는 것을 추천합니다.)</p>
+<hr>
+<h3 id="-실시간-시계-코드"><a class="header" href="#-실시간-시계-코드">🕒 실시간 시계 코드</a></h3>
+<pre><code class="language-python">import time
+from datetime import datetime
+
+try:
+    while True:
+        # 현재 시간 가져오기 (년-월-일 시:분:초 형식)
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # \r (캐리지 리턴)을 사용하여 커서를 줄 맨 앞으로 이동하고 시간을 출력합니다.
+        # end=""를 주어 줄바꿈이 일어나지 않도록 합니다.
+        print(f"\r현재 시간: {now}", end="", flush=True)
+        
+        # 1초 동안 대기
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    # 사용자가 Ctrl + C를 누르면 안전하게 종료합니다.
+    print("\n👋 시계를 종료합니다.")
+
+</code></pre>
+<hr>
+<h3 id="-코드-포인트-설명"><a class="header" href="#-코드-포인트-설명">💡 코드 포인트 설명</a></h3>
+<ul>
+<li><strong><code>datetime.now().strftime(...)</code></strong>: 현재 날짜와 시각을 우리가 보기 편한 형태의 문자열로 변환합니다. <code>Y</code>는 년, <code>m</code>은 월, <code>d</code>는 일, <code>H</code>는 시(24시 형태), <code>M</code>은 분, <code>S</code>는 초를 뜻합니다.</li>
+<li>**<code>\r</code>과 <code>end=""**</code>: <code>\r</code>은 커서를 현재 줄의 맨 처음으로 되돌리는 제어 문자입니다. 여기에 <code>end=""</code>(줄바꿈 방지)를 조합하면, 매초마다 새로운 줄을 만들지 않고 <strong>기존에 출력된 시간 위에 새로운 시간을 덮어쓰게</strong> 되어 디지털시계처럼 작동합니다.</li>
+<li><strong><code>flush=True</code></strong>: 출력 버퍼를 강제로 비워 실시간으로 화면에 글자가 나타나도록 보장합니다.</li>
+<li><strong><code>try-except KeyboardInterrupt</code></strong>: 무한 루프가 돌다가 사용자가 터미널에서 <code>Ctrl + C</code>를 누르면 깔끔하게 작별 인사를 건네며 종료됩니다.</li>
+</ul>
+<hr>
+<h2 id="실행-화면-2"><a class="header" href="#실행-화면-2">실행 화면</a></h2>
+<pre><code class="language-powershell">PS E:\test\pyjisa&gt; python clock.py
+현재 시간: 2026-06-21 03:18:47
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="가위바위보-게임"><a class="header" href="#가위바위보-게임">가위바위보 게임</a></h1>
+<h2 id="gemini에게-물어보기-3"><a class="header" href="#gemini에게-물어보기-3">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 가위바위보 게임 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬으로 간단하게 즐길 수 있는 <strong>가위바위보 게임</strong> 코드입니다.</p>
+<p>컴퓨터가 무작위로 가위, 바위, 보 중 하나를 선택하고, 사용자의 입력과 비교하여 승·무·패를 판정합니다. 잘못된 입력에 대한 예외 처리와 게임 종료 기능도 포함되어 있습니다.</p>
+<hr>
+<h3 id="-가위바위보-게임-코드"><a class="header" href="#-가위바위보-게임-코드">✊✌️✋ 가위바위보 게임 코드</a></h3>
+<pre><code class="language-python">import random
+
+def rps_game():
+    # 선택지 리스트
+    choices = ["가위", "바위", "보"]
+    
+    print("====================================")
+    print("🤖 컴퓨터와 함께하는 가위바위보 게임! 🤖")
+    print("====================================")
+    print("(종료하고 싶다면 '종료'를 입력하세요.)\n")
+
+    while True:
+        # 컴퓨터의 무작위 선택
+        computer_choice = random.choice(choices)
+        
+        # 사용자 입력 받기
+        user_choice = input("가위, 바위, 보 중 하나를 선택하세요: ").strip()
+        
+        # 종료 조건 확인
+        if user_choice == "종료":
+            print("\n👋 게임을 종료합니다. 다음에 또 봐요!")
+            break
+            
+        # 올바른 입력인지 검증
+        if user_choice not in choices:
+            print("🚨 잘못된 입력입니다! '가위', '바위', '보' 중에서만 입력해주세요.\n")
+            continue
+            
+        print(f"👉 사용자: {user_choice} VS 컴퓨터: {computer_choice}")
+        
+        # 승패 판정 무직
+        if user_choice == computer_choice:
+            print("🤝 비겼습니다! 다시 대결합니다.\n")
+        elif (user_choice == "가위" and computer_choice == "보") or \
+             (user_choice == "바위" and computer_choice == "가위") or \
+             (user_choice == "보" and computer_choice == "바위"):
+            print("🎉 축하합니다! 당신이 이겼습니다! 🎉\n")
+        else:
+            print("💻 컴퓨터가 이겼습니다! 아쉽네요. 😢\n")
+
+# 게임 실행
+if __name__ == "__main__":
+    rps_game()
+
+</code></pre>
+<hr>
+<h3 id="-코드-포인트-설명-1"><a class="header" href="#-코드-포인트-설명-1">💡 코드 포인트 설명</a></h3>
+<ul>
+<li><strong><code>random.choice(choices)</code></strong>: 리스트 <code>["가위", "바위", "보"]</code> 안에서 무작위로 아이템을 하나 추출합니다.</li>
+<li><strong><code>strip()</code></strong>: 사용자가 입력할 때 실수로 넣은 앞뒤 공백(예: <code>" 가위 "</code>)을 제거해 주어 입력 오류를 줄입니다.</li>
+<li><strong>판정 조건 논리</strong>: 승리 조건을 한눈에 볼 수 있도록 백슬래시(<code>\</code>)를 사용해 줄을 나누어 가독성을 높였습니다. 사용자가 이기는 3가지 경우를 제외하고, 비기는 경우를 먼저 걸러냈기 때문에 남은 모든 경우는 컴퓨터의 승리가 됩니다.</li>
+</ul>
+<hr>
+<h2 id="실행화면"><a class="header" href="#실행화면">실행화면</a></h2>
+<p><img src="samples/attachments/20260621032618.png" alt=""></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="행맨-게임"><a class="header" href="#행맨-게임">행맨 게임</a></h1>
+<h2 id="gemini에게-물어보기-4"><a class="header" href="#gemini에게-물어보기-4">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 단어 맞추는 행맨 게임 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬으로 구현한 클래식한 <strong>행맨(Hangman) 단어 맞추기 게임</strong> 코드입니다.</p>
+<p>기회(목숨)는 총 6번 주어지며, 사용자가 알파벳을 하나씩 입력하면서 숨겨진 단어를 추리하는 방식으로 작동합니다.</p>
+<hr>
+<h3 id="-행맨-게임-코드"><a class="header" href="#-행맨-게임-코드">🔤 행맨 게임 코드</a></h3>
+<pre><code class="language-python">import random
+
+def hangman_game():
+    # 게임에 사용할 단어 풀 (원하는 단어를 마음껏 추가해보세요!)
+    words = ["python", "programming", "developer", "computer", "jupiter", "science", "strawberry"]
+    
+    # 무작위로 하나의 단어 선택
+    secret_word = random.choice(words)
+    
+    # 맞춘 글자를 기록할 세트 (중복 방지)
+    guessed_letters = set()
+    
+    # 남은 기회 (행맨 몸통 개수에 맞춤)
+    turns = 6
+
+    print("====================================")
+    print("🎩 클래식 행맨(Hangman) 단어 맞추기 게임! 🎩")
+    print("====================================")
+    print(f"힌트: {len(secret_word)}글자의 영어 단어입니다.\n")
+
+    while turns &gt; 0:
+        # 현재까지 맞춘 상황을 화면에 표시 (예: p _ t h _ _ )
+        display_word = ""
+        for letter in secret_word:
+            if letter in guessed_letters:
+                display_word += letter + " "
+            else:
+                display_word += "_ "
+        
+        print(f"현재 단어: {display_word.strip()}")
+        print(f"남은 기회: {'❤️ ' * turns} ({turns}번)")
+        
+        # 이미 입력했던 틀린 글자들을 보여줌
+        wrong_letters = [l for l in guessed_letters if l not in secret_word]
+        if wrong_letters:
+            print(f"틀린 글자들: {', '.join(wrong_letters)}")
+        
+        # 1글자 입력 받기
+        guess = input("알파벳 하나를 입력하세요: ").lower().strip()
+        print("-" * 40)
+
+        # 입력값 검증 (알파벳 1개인지 확인)
+        if len(guess) != 1 or not guess.isalpha():
+            print("🚨 올바른 알파벳 1글자만 입력해주세요.\n")
+            continue
+
+        # 이미 입력했던 글자인지 확인
+        if guess in guessed_letters:
+            print(f"⚠️ 이미 입력했던 글자('{guess}')입니다. 다른 글자를 입력하세요.\n")
+            continue
+
+        # 맞춘 글자 목록에 추가
+        guessed_letters.add(guess)
+
+        # 정답 단어에 입력한 글자가 있는지 확인
+        if guess in secret_word:
+            print(f"✨ 나이스! '{guess}'가 단어에 포함되어 있습니다.\n")
+            
+            # 모든 글자를 다 맞췄는지 확인
+            # secret_word의 모든 글자가 guessed_letters에 들어갔다면 승리!
+            if all(letter in guessed_letters for letter in secret_word):
+                print(f"🎉 축하합니다! 정답을 맞추셨습니다! 🎉")
+                print(f"👉 정답 단어: {secret_word.upper()}")
+                break
+        else:
+            print(f"❌ 아쉽네요. '{guess}'는 단어에 없습니다.\n")
+            turns -= 1
+
+    else:
+        # while 문이 break 없이 정상적으로 종료된 경우 (turns == 0)
+        print("💀 기회를 모두 소진하셨습니다. 행맨이 완성되었습니다!")
+        print(f"👉 정답 단어는 [ {secret_word.upper()} ] 였습니다.")
+
+# 게임 실행
+if __name__ == "__main__":
+    hangman_game()
+
+</code></pre>
+<hr>
+<h3 id="-코드-포인트-설명-2"><a class="header" href="#-코드-포인트-설명-2">💡 코드 포인트 설명</a></h3>
+<ul>
+<li><strong><code>random.choice(words)</code></strong>: 준비된 단어 리스트 중에서 컴퓨터가 문제를 낼 단어 하나를 무작위로 고릅니다.</li>
+<li><strong><code>guessed_letters = set()</code></strong>: 사용자가 입력한 글자들을 저장하는 집합(Set)입니다. 중복 입력을 방지하고 글자가 포함되어 있는지 빠르게 체크하기 좋습니다.</li>
+<li><strong><code>all(letter in guessed_letters for letter in secret_word)</code></strong>: 파이썬의 내장 함수 <code>all()</code>을 사용해 정답 단어의 <strong>모든 알파벳</strong>이 사용자가 맞춘 글자 목록에 들어왔는지 한 번에 검사합니다. 모두 들어왔다면 게임에서 승리합니다.</li>
+<li><strong><code>while - else</code> 문</strong>: 파이썬 특유의 문법으로, <code>while</code> 루프가 중간에 <code>break</code>로 끊기지 않고 <strong>조건이 거짓(기회가 0)이 되어 끝났을 때만</strong> <code>else</code> 블록이 실행됩니다. 즉, 정답을 못 맞추고 기회를 다 날렸을 때의 패배 문구를 띄우기에 안성맞춤입니다.</li>
+</ul>
+<hr>
+<h2 id="실행화면-1"><a class="header" href="#실행화면-1">실행화면</a></h2>
+<p><img src="samples/attachments/20260621033411.png" alt=""></p>
+<p><img src="samples/attachments/20260621033627.png" alt=""></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="행맨-게임-그래픽-버전"><a class="header" href="#행맨-게임-그래픽-버전">행맨 게임 그래픽 버전</a></h1>
+<h2 id="gemini에게-물어보기-5"><a class="header" href="#gemini에게-물어보기-5">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 방금 전 행맨 게임을 그래픽 버전으로 만들어줘</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>텍스트 기반이었던 행맨 게임을 파이썬의 표준 GUI 라이브러리인 <code>tkinter</code>를 활용해 시각적인 그래픽 버전으로 업그레이드했습니다!</p>
+<p>기회가 차감될 때마다 <strong>행맨이 교수대에 매달리는 모습이 실시간으로 그려지며</strong>, 마우스 클릭 대신 키보드로 타이핑하여 게임을 즐길 수 있습니다. 별도의 외부 라이브러리 설치 없이 바로 실행 가능합니다.</p>
+<hr>
+<h3 id="-행맨-게임-그래픽-버전-코드"><a class="header" href="#-행맨-게임-그래픽-버전-코드">🎨 행맨 게임 그래픽 버전 코드</a></h3>
+<pre><code class="language-python">import tkinter as tk
+from tkinter import messagebox
+import random
+
+class HangmanGUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("🎴 행맨 그래픽 게임")
+        self.root.geometry("600x500")
+        self.root.resizable(False, False)
+        
+        # 게임 단어 풀
+        self.words = ["python", "programming", "developer", "computer", "jupiter", "science", "strawberry"]
+        
+        # 키보드 입력 바인딩
+        self.root.bind("&lt;Key&gt;", self.handle_keypress)
+        
+        self.reset_game()
+
+    def reset_game(self):
+        """게임 데이터를 초기화하고 화면을 그립니다."""
+        self.secret_word = random.choice(self.words)
+        self.guessed_letters = set()
+        self.turns = 6
+        
+        # 기존 위젯이 있다면 제거
+        for widget in self.root.winfo_children():
+            widget.destroy()
+            
+        # 상단 레이아웃 분할
+        self.create_widgets()
+        self.draw_hangman()
+
+    def create_widgets(self):
+        """GUI 위젯들을 배치합니다."""
+        # 1. 행맨이 그려질 캔버스 (좌측)
+        self.canvas = tk.Canvas(self.root, width=250, height=350, bg="white", highlightthickness=1, highlightbackground="#ccc")
+        self.canvas.pack(side=tk.LEFT, padx=20, pady=20)
+        
+        # 2. 정보 우측 프레임
+        self.right_frame = tk.Frame(self.root)
+        self.right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=20, pady=20)
+        
+        # 타이틀
+        title_label = tk.Label(self.right_frame, text="HANGMAN GAME", font=("Helvetica", 20, "bold"), fg="#2c3e50")
+        title_label.pack(pady=10)
+        
+        # 숨겨진 단어 표시판 ( _ _ _ _ )
+        self.word_label = tk.Label(self.right_frame, text=self.get_display_word(), font=("Courier", 24, "bold"))
+        self.word_label.pack(pady=20)
+        
+        # 남은 기회 표시
+        self.turns_label = tk.Label(self.right_frame, text=f"남은 기회: {'❤️ ' * self.turns}", font=("맑은 고딕", 12), fg="#e74c3c")
+        self.turns_label.pack(pady=5)
+        
+        # 오답 글자 표시
+        self.wrong_label = tk.Label(self.right_frame, text="틀린 글자: ", font=("맑은 고딕", 11), fg="#7f8c8d", wraplength=250)
+        self.wrong_label.pack(pady=10)
+        
+        # 안내 문구
+        info_label = tk.Label(self.right_frame, text="⌨️ 키보드로 알파벳을 입력하세요!", font=("맑은 고딕", 10, "italic"), fg="#95a5a6")
+        info_label.pack(side=tk.BOTTOM, pady=20)
+
+    def get_display_word(self):
+        """현재까지 맞춘 단어 상태를 문자열로 반환합니다."""
+        return " ".join([letter if letter in self.guessed_letters else "_" for letter in self.secret_word])
+
+    def draw_hangman(self):
+        """남은 기회에 따라 캔버스에 행맨을 그립니다."""
+        self.canvas.delete("all")
+        
+        # 기본 교수대 (언제나 그려짐)
+        self.canvas.create_line(30, 320, 180, 320, width=4)  # 바닥
+        self.canvas.create_line(70, 320, 70, 50, width=4)    # 기둥
+        self.canvas.create_line(70, 50, 150, 50, width=4)    # 위 대들보
+        self.canvas.create_line(150, 50, 150, 90, width=2)   # 밧줄
+        
+        # 기회 깎임에 따라 신체 부위 추가
+        if self.turns &lt;= 5: # 머리
+            self.canvas.create_oval(130, 90, 170, 130, width=3)
+        if self.turns &lt;= 4: # 몸통
+            self.canvas.create_line(150, 130, 150, 210, width=3)
+        if self.turns &lt;= 3: # 왼팔
+            self.canvas.create_line(150, 150, 120, 180, width=3)
+        if self.turns &lt;= 2: # 오른팔
+            self.canvas.create_line(150, 150, 180, 180, width=3)
+        if self.turns &lt;= 1: # 왼다리
+            self.canvas.create_line(150, 210, 120, 260, width=3)
+        if self.turns &lt;= 0: # 오른다리 (게임 오버)
+            self.canvas.create_line(150, 210, 180, 260, width=3)
+
+    def handle_keypress(self, event):
+        """키보드 입력을 처리하는 핵심 로직입니다."""
+        guess = event.char.lower()
+        
+        # 알파벳 글자 하나가 맞는지 확인
+        if len(guess) != 1 or not guess.isalpha():
+            return
+            
+        # 이미 입력한 글자 패스
+        if guess in self.guessed_letters:
+            return
+            
+        self.guessed_letters.add(guess)
+        
+        if guess in self.secret_word:
+            # 정답 레이블 갱신
+            self.word_label.config(text=self.get_display_word())
+            
+            # 승리 조건 확인
+            if all(l in self.guessed_letters for l in self.secret_word):
+                self.end_game(True)
+        else:
+            self.turns -= 1
+            self.turns_label.config(text=f"남은 기회: {'❤️ ' * self.turns}")
+            
+            # 틀린 글자 목록 갱신
+            wrong_letters = [l for l in self.guessed_letters if l not in self.secret_word]
+            self.wrong_label.config(text=f"틀린 글자: {', '.join(wrong_letters).upper()}")
+            
+            # 행맨 다시 그리기
+            self.draw_hangman()
+            
+            # 패배 조건 확인
+            if self.turns &lt;= 0:
+                self.end_game(False)
+
+    def end_game(self, won):
+        """게임 종료 메시지를 띄우고 재시작 여부를 묻습니다."""
+        if won:
+            msg = f"🎉 승리했습니다! 🎉\n\n정답 단어: {self.secret_word.upper()}"
+        else:
+            msg = f"💀 패배했습니다... 행맨이 완성되었습니다.\n\n정답 단어: {self.secret_word.upper()}"
+            
+        if messagebox.askyesno("게임 종료", msg + "\n\n다시 플레이하시겠습니까?"):
+            self.reset_game()
+        else:
+            self.root.quit()
+
+# 프로그램 실행
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = HangmanGUI(root)
+    root.mainloop()
+
+</code></pre>
+<hr>
+<h3 id="-그래픽-버전의-특징-및-변경점"><a class="header" href="#-그래픽-버전의-특징-및-변경점">💡 그래픽 버전의 특징 및 변경점</a></h3>
+<ul>
+<li><strong><code>tk.Canvas</code> 활용</strong>: 텍스트 대신 <code>create_line</code>(선)과 <code>create_oval</code>(원) 메소드를 사용해 캔버스 위에 실시간으로 졸라맨 형태의 행맨을 직접 그려줍니다.</li>
+<li><strong>이벤트 바인딩 (<code>root.bind</code>)</strong>: 따로 텍스트 창에 입력하고 엔터를 누를 필요 없이, 프로그램 창이 켜진 상태에서 <strong>키보드로 알파벳을 타이핑하면 즉시 인식</strong>해 게임이 진행됩니다.</li>
+<li><strong><code>messagebox</code> 안내창</strong>: 게임에서 이기거나 졌을 때 직관적인 팝업창을 띄워주고, 예(<code>Yes</code>)/아니오(<code>No</code>) 버튼을 통해 게임을 무한 재시작할 수 있게 설계했습니다.</li>
+</ul>
+<hr>
+<h2 id="실행화면-2"><a class="header" href="#실행화면-2">실행화면</a></h2>
+<p><img src="samples/attachments/20260621034210.png" alt=""></p>
+<p>정답은 strawberry인데 정답의 양옆이 잘려서 제대로 보이지 않고 있다.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="오목-게임-그래픽-버전"><a class="header" href="#오목-게임-그래픽-버전">오목 게임 그래픽 버전</a></h1>
+<h2 id="gemini에게-물어보기-6"><a class="header" href="#gemini에게-물어보기-6">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 그래픽 UI를 가진 오목게임 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬에서 그래픽 UI(GUI)를 구현할 때 별도의 설치 없이 가장 기본적으로 쓸 수 있는 <strong><code>tkinter</code></strong> 라이브러리를 활용한 <strong>오목 게임</strong> 코드입니다.</p>
+<p>초보자도 코드를 보고 이해할 수 있도록 복잡한 인공지능(AI)은 빼고, <strong>친구와 번갈아 가며 둘 수 있는 2인용 오목</strong>으로 깔끔하게 구현했습니다.</p>
+<hr>
+<h3 id="-파이썬-gui-오목-게임-코드"><a class="header" href="#-파이썬-gui-오목-게임-코드">🎮 파이썬 GUI 오목 게임 코드</a></h3>
+<pre><code class="language-python">import tkinter as tk
+from tkinter import messagebox
+
+class OmokGame:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("파이썬 GUI 오목")
+        
+        # 게임 설정 (15x15 바둑판)
+        self.board_size = 15
+        self.cell_size = 40  # 격자 크기 (픽셀)
+        self.current_player = 1  # 1: 흑돌, 2: 백돌
+        
+        # 바둑판 상태 저장 (0: 빈칸, 1: 흑, 2: 백)
+        self.board = [[0] * self.board_size for _ in range(self.board_size)]
+        
+        # 캔버스 생성 (바둑판 그리기용)
+        self.canvas_size = self.board_size * self.cell_size
+        self.canvas = tk.Canvas(root, width=self.canvas_size, height=self.canvas_size, bg="#E3A857")
+        self.canvas.pack()
+        
+        # 바둑판 선 그리기 및 클릭 이벤트 연결
+        self.draw_board()
+        self.canvas.bind("&lt;Button-1&gt;", self.click_event)
+
+    def draw_board(self):
+        """바둑판의 격자선을 그리는 함수"""
+        for i in range(self.board_size):
+            # 가로선
+            self.canvas.create_line(
+                self.cell_size // 2, self.cell_size // 2 + i * self.cell_size,
+                self.canvas_size - self.cell_size // 2, self.cell_size // 2 + i * self.cell_size
+            )
+            # 세로선
+            self.canvas.create_line(
+                self.cell_size // 2 + i * self.cell_size, self.cell_size // 2,
+                self.cell_size // 2 + i * self.cell_size, self.canvas_size - self.cell_size // 2
+            )
+
+    def click_event(self, event):
+        """바둑판 클릭 시 돌을 놓는 함수"""
+        # 클릭한 좌표를 바둑판의 행(row), 열(col) 인덱스로 변환
+        col = round((event.x - self.cell_size // 2) / self.cell_size)
+        row = round((event.y - self.cell_size // 2) / self.cell_size)
+        
+        # 바둑판 범위를 벗어나거나 이미 돌이 있는 곳이면 무시
+        if not (0 &lt;= row &lt; self.board_size and 0 &lt;= col &lt; self.board_size):
+            return
+        if self.board[row][col] != 0:
+            return
+            
+        # 바둑판 배열 업데이트 및 돌 그리기
+        self.board[row][col] = self.current_player
+        self.draw_stone(row, col)
+        
+        # 승리 판정
+        if self.check_win(row, col):
+            winner = "흑돌(Black)" if self.current_player == 1 else "백돌(White)"
+            messagebox.showinfo("게임 종료", f"🎉 {winner} 승리!")
+            self.reset_game()
+            return
+            
+        # 턴 교체 (1 -&gt; 2, 2 -&gt; 1)
+        self.current_player = 2 if self.current_player == 1 else 1
+
+    def draw_stone(self, row, col):
+        """화면에 바둑돌을 그리는 함수"""
+        x = self.cell_size // 2 + col * self.cell_size
+        y = self.cell_size // 2 + row * self.cell_size
+        r = self.cell_size // 2 - 2  # 돌의 반지름
+        
+        color = "black" if self.current_player == 1 else "white"
+        self.canvas.create_oval(x - r, y - r, x + r, y + r, fill=color, outline="black")
+
+    def check_win(self, row, col):
+        """돌이 놓인 자리 기준으로 5개가 연속되었는지 확인하는 함수"""
+        # 체크할 4가지 방향 (가로, 세로, 우하향 대각선, 우상향 대각선)
+        directions = [(0, 1), (1, 0), (1, 1), (-1, 1)]
+        player = self.board[row][col]
+        
+        for dr, dc in directions:
+            count = 1  # 방금 놓은 돌 포함
+            
+            # 한쪽 방향으로 전진하며 체크
+            r, c = row + dr, col + dc
+            while 0 &lt;= r &lt; self.board_size and 0 &lt;= c &lt; self.board_size and self.board[r][c] == player:
+                count += 1
+                r += dr
+                c += dc
+                
+            # 반대 방향으로 전진하며 체크
+            r, c = row - dr, col - dc
+            while 0 &lt;= r &lt; self.board_size and 0 &lt;= c &lt; self.board_size and self.board[r][c] == player:
+                count += 1
+                r -= dr
+                c -= dc
+                
+            # 정확히 5개이거나 그 이상(장목)이면 승리 (간단한 규칙 적용)
+            if count &gt;= 5:
+                return True
+        return False
+
+    def reset_game(self):
+        """게임을 초기화하는 함수"""
+        self.board = [[0] * self.board_size for _ in range(self.board_size)]
+        self.canvas.delete("all")
+        self.draw_board()
+        self.current_player = 1
+
+# 프로그램 실행
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = OmokGame(root)
+    root.mainloop()
+
+</code></pre>
+<hr>
+<h3 id="-코드의-주요-포인트-설명-초보자용"><a class="header" href="#-코드의-주요-포인트-설명-초보자용">💡 코드의 주요 포인트 설명 (초보자용)</a></h3>
+<ol>
+<li><strong><code>tkinter.Canvas</code></strong>: 화면에 선을 긋거나 동그라미를 그릴 수 있는 도화지 역할을 합니다. 바둑판 배경색은 센스 있게 나무색(<code>#E3A857</code>)으로 지정했습니다.</li>
+<li><strong><code>canvas.bind("&lt;Button-1&gt;", ...)</code></strong>: 사용자가 마우스 왼쪽 버튼을 클릭했을 때 특정 함수(<code>click_event</code>)가 실행되도록 연결해 주는 윈도우 프로그래밍의 핵심 기능입니다.</li>
+<li><strong><code>round()</code> 함수</strong>: 사용자가 정확히 선 교차점을 누르지 않고 근처만 눌러도, 가장 가까운 교차점에 이쁘게 돌이 올라가도록 수학적으로 반올림 처리를 해주었습니다.</li>
+<li><strong>승리 알고리즘 (<code>check_win</code>)</strong>: 바둑돌이 놓인 순간, 그 돌을 기준으로 <strong>가로, 세로, 대각선 2방향</strong> 양쪽으로 쭉 뻗어나가며 같은 색 돌이 총 5개 이상 연속되었는지 검사합니다.</li>
+</ol>
+<h3 id="-실행-방법"><a class="header" href="#-실행-방법">🏃 실행 방법</a></h3>
+<p>파이썬이 설치된 환경(VS Code, PyCharm, IDLE 등)에서 위 코드를 복사해 <code>.py</code> 파일로 저장한 뒤 실행하면 이쁜 바둑판 창이 팝업됩니다. 흑돌부터 시작해 번갈아 두면서 오목을 즐겨보세요!</p>
+<hr>
+<h2 id="실행화면-3"><a class="header" href="#실행화면-3">실행화면</a></h2>
+<p><img src="samples/attachments/20260621035404.png" alt=""></p>
 
                     </main>
 

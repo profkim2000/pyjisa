@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>AI로 만든 파이썬 프로그램들 - pyjisa</title>
+        <title>오목 게임 그래픽 버전 - pyjisa</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-0392ca55.css">
+        <link rel="stylesheet" href="../css/chrome-fc474251.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bc75719b.js";
+            window.path_to_searchindex_js = "../searchindex-bc75719b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-de2c0fc6.js"></script>
+        <script src="../toc-de2c0fc6.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -105,7 +105,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -140,7 +140,7 @@
                     <h1 class="menu-title">pyjisa</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -174,16 +174,154 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="ai로-만든-파이썬-프로그램들"><a class="header" href="#ai로-만든-파이썬-프로그램들">AI로 만든 파이썬 프로그램들</a></h1>
+                        <h1 id="오목-게임-그래픽-버전"><a class="header" href="#오목-게임-그래픽-버전">오목 게임 그래픽 버전</a></h1>
+<h2 id="gemini에게-물어보기"><a class="header" href="#gemini에게-물어보기">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 그래픽 UI를 가진 오목게임 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬에서 그래픽 UI(GUI)를 구현할 때 별도의 설치 없이 가장 기본적으로 쓸 수 있는 <strong><code>tkinter</code></strong> 라이브러리를 활용한 <strong>오목 게임</strong> 코드입니다.</p>
+<p>초보자도 코드를 보고 이해할 수 있도록 복잡한 인공지능(AI)은 빼고, <strong>친구와 번갈아 가며 둘 수 있는 2인용 오목</strong>으로 깔끔하게 구현했습니다.</p>
+<hr>
+<h3 id="-파이썬-gui-오목-게임-코드"><a class="header" href="#-파이썬-gui-오목-게임-코드">🎮 파이썬 GUI 오목 게임 코드</a></h3>
+<pre><code class="language-python">import tkinter as tk
+from tkinter import messagebox
+
+class OmokGame:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("파이썬 GUI 오목")
+        
+        # 게임 설정 (15x15 바둑판)
+        self.board_size = 15
+        self.cell_size = 40  # 격자 크기 (픽셀)
+        self.current_player = 1  # 1: 흑돌, 2: 백돌
+        
+        # 바둑판 상태 저장 (0: 빈칸, 1: 흑, 2: 백)
+        self.board = [[0] * self.board_size for _ in range(self.board_size)]
+        
+        # 캔버스 생성 (바둑판 그리기용)
+        self.canvas_size = self.board_size * self.cell_size
+        self.canvas = tk.Canvas(root, width=self.canvas_size, height=self.canvas_size, bg="#E3A857")
+        self.canvas.pack()
+        
+        # 바둑판 선 그리기 및 클릭 이벤트 연결
+        self.draw_board()
+        self.canvas.bind("&lt;Button-1&gt;", self.click_event)
+
+    def draw_board(self):
+        """바둑판의 격자선을 그리는 함수"""
+        for i in range(self.board_size):
+            # 가로선
+            self.canvas.create_line(
+                self.cell_size // 2, self.cell_size // 2 + i * self.cell_size,
+                self.canvas_size - self.cell_size // 2, self.cell_size // 2 + i * self.cell_size
+            )
+            # 세로선
+            self.canvas.create_line(
+                self.cell_size // 2 + i * self.cell_size, self.cell_size // 2,
+                self.cell_size // 2 + i * self.cell_size, self.canvas_size - self.cell_size // 2
+            )
+
+    def click_event(self, event):
+        """바둑판 클릭 시 돌을 놓는 함수"""
+        # 클릭한 좌표를 바둑판의 행(row), 열(col) 인덱스로 변환
+        col = round((event.x - self.cell_size // 2) / self.cell_size)
+        row = round((event.y - self.cell_size // 2) / self.cell_size)
+        
+        # 바둑판 범위를 벗어나거나 이미 돌이 있는 곳이면 무시
+        if not (0 &lt;= row &lt; self.board_size and 0 &lt;= col &lt; self.board_size):
+            return
+        if self.board[row][col] != 0:
+            return
+            
+        # 바둑판 배열 업데이트 및 돌 그리기
+        self.board[row][col] = self.current_player
+        self.draw_stone(row, col)
+        
+        # 승리 판정
+        if self.check_win(row, col):
+            winner = "흑돌(Black)" if self.current_player == 1 else "백돌(White)"
+            messagebox.showinfo("게임 종료", f"🎉 {winner} 승리!")
+            self.reset_game()
+            return
+            
+        # 턴 교체 (1 -&gt; 2, 2 -&gt; 1)
+        self.current_player = 2 if self.current_player == 1 else 1
+
+    def draw_stone(self, row, col):
+        """화면에 바둑돌을 그리는 함수"""
+        x = self.cell_size // 2 + col * self.cell_size
+        y = self.cell_size // 2 + row * self.cell_size
+        r = self.cell_size // 2 - 2  # 돌의 반지름
+        
+        color = "black" if self.current_player == 1 else "white"
+        self.canvas.create_oval(x - r, y - r, x + r, y + r, fill=color, outline="black")
+
+    def check_win(self, row, col):
+        """돌이 놓인 자리 기준으로 5개가 연속되었는지 확인하는 함수"""
+        # 체크할 4가지 방향 (가로, 세로, 우하향 대각선, 우상향 대각선)
+        directions = [(0, 1), (1, 0), (1, 1), (-1, 1)]
+        player = self.board[row][col]
+        
+        for dr, dc in directions:
+            count = 1  # 방금 놓은 돌 포함
+            
+            # 한쪽 방향으로 전진하며 체크
+            r, c = row + dr, col + dc
+            while 0 &lt;= r &lt; self.board_size and 0 &lt;= c &lt; self.board_size and self.board[r][c] == player:
+                count += 1
+                r += dr
+                c += dc
+                
+            # 반대 방향으로 전진하며 체크
+            r, c = row - dr, col - dc
+            while 0 &lt;= r &lt; self.board_size and 0 &lt;= c &lt; self.board_size and self.board[r][c] == player:
+                count += 1
+                r -= dr
+                c -= dc
+                
+            # 정확히 5개이거나 그 이상(장목)이면 승리 (간단한 규칙 적용)
+            if count &gt;= 5:
+                return True
+        return False
+
+    def reset_game(self):
+        """게임을 초기화하는 함수"""
+        self.board = [[0] * self.board_size for _ in range(self.board_size)]
+        self.canvas.delete("all")
+        self.draw_board()
+        self.current_player = 1
+
+# 프로그램 실행
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = OmokGame(root)
+    root.mainloop()
+
+</code></pre>
+<hr>
+<h3 id="-코드의-주요-포인트-설명-초보자용"><a class="header" href="#-코드의-주요-포인트-설명-초보자용">💡 코드의 주요 포인트 설명 (초보자용)</a></h3>
+<ol>
+<li><strong><code>tkinter.Canvas</code></strong>: 화면에 선을 긋거나 동그라미를 그릴 수 있는 도화지 역할을 합니다. 바둑판 배경색은 센스 있게 나무색(<code>#E3A857</code>)으로 지정했습니다.</li>
+<li><strong><code>canvas.bind("&lt;Button-1&gt;", ...)</code></strong>: 사용자가 마우스 왼쪽 버튼을 클릭했을 때 특정 함수(<code>click_event</code>)가 실행되도록 연결해 주는 윈도우 프로그래밍의 핵심 기능입니다.</li>
+<li><strong><code>round()</code> 함수</strong>: 사용자가 정확히 선 교차점을 누르지 않고 근처만 눌러도, 가장 가까운 교차점에 이쁘게 돌이 올라가도록 수학적으로 반올림 처리를 해주었습니다.</li>
+<li><strong>승리 알고리즘 (<code>check_win</code>)</strong>: 바둑돌이 놓인 순간, 그 돌을 기준으로 <strong>가로, 세로, 대각선 2방향</strong> 양쪽으로 쭉 뻗어나가며 같은 색 돌이 총 5개 이상 연속되었는지 검사합니다.</li>
+</ol>
+<h3 id="-실행-방법"><a class="header" href="#-실행-방법">🏃 실행 방법</a></h3>
+<p>파이썬이 설치된 환경(VS Code, PyCharm, IDLE 등)에서 위 코드를 복사해 <code>.py</code> 파일로 저장한 뒤 실행하면 이쁜 바둑판 창이 팝업됩니다. 흑돌부터 시작해 번갈아 두면서 오목을 즐겨보세요!</p>
+<hr>
+<h2 id="실행화면"><a class="header" href="#실행화면">실행화면</a></h2>
+<p><img src="attachments/20260621035404.png" alt=""></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="samples/catchnumber.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            <a rel="prev" href="../samples/hangman2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -191,10 +329,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="samples/catchnumber.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    <a rel="prev" href="../samples/hangman2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
+
             </nav>
 
         </div>
@@ -212,13 +350,13 @@
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
 

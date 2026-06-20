@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>AI로 만든 파이썬 프로그램들 - pyjisa</title>
+        <title>현재 시각 - pyjisa</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-0392ca55.css">
+        <link rel="stylesheet" href="../css/chrome-fc474251.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bc75719b.js";
+            window.path_to_searchindex_js = "../searchindex-bc75719b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-de2c0fc6.js"></script>
+        <script src="../toc-de2c0fc6.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -105,7 +105,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -140,7 +140,7 @@
                     <h1 class="menu-title">pyjisa</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -174,14 +174,59 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="ai로-만든-파이썬-프로그램들"><a class="header" href="#ai로-만든-파이썬-프로그램들">AI로 만든 파이썬 프로그램들</a></h1>
+                        <h1 id="현재-시각"><a class="header" href="#현재-시각">현재 시각</a></h1>
+<h2 id="gemini에게-물어보기"><a class="header" href="#gemini에게-물어보기">Gemini에게 물어보기</a></h2>
+<hr>
+<p><strong>질문: 1초에 한 번씩 현재 시간 보여주는 파이썬 코드</strong></p>
+<br>
+<p><strong>gemini 답:</strong></p>
+<p>파이썬으로 <strong>1초에 한 번씩 현재 시간을 실시간으로 갱신하며 보여주는</strong> 코드입니다.</p>
+<p>화면이 아래로 계속 스크롤되지 않고, <strong>기존 줄을 깔끔하게 지우고 새로고침</strong>되도록 구현했습니다. (터미널이나 명령 프롬프트 환경에서 실행하시는 것을 추천합니다.)</p>
+<hr>
+<h3 id="-실시간-시계-코드"><a class="header" href="#-실시간-시계-코드">🕒 실시간 시계 코드</a></h3>
+<pre><code class="language-python">import time
+from datetime import datetime
+
+try:
+    while True:
+        # 현재 시간 가져오기 (년-월-일 시:분:초 형식)
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # \r (캐리지 리턴)을 사용하여 커서를 줄 맨 앞으로 이동하고 시간을 출력합니다.
+        # end=""를 주어 줄바꿈이 일어나지 않도록 합니다.
+        print(f"\r현재 시간: {now}", end="", flush=True)
+        
+        # 1초 동안 대기
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    # 사용자가 Ctrl + C를 누르면 안전하게 종료합니다.
+    print("\n👋 시계를 종료합니다.")
+
+</code></pre>
+<hr>
+<h3 id="-코드-포인트-설명"><a class="header" href="#-코드-포인트-설명">💡 코드 포인트 설명</a></h3>
+<ul>
+<li><strong><code>datetime.now().strftime(...)</code></strong>: 현재 날짜와 시각을 우리가 보기 편한 형태의 문자열로 변환합니다. <code>Y</code>는 년, <code>m</code>은 월, <code>d</code>는 일, <code>H</code>는 시(24시 형태), <code>M</code>은 분, <code>S</code>는 초를 뜻합니다.</li>
+<li>**<code>\r</code>과 <code>end=""**</code>: <code>\r</code>은 커서를 현재 줄의 맨 처음으로 되돌리는 제어 문자입니다. 여기에 <code>end=""</code>(줄바꿈 방지)를 조합하면, 매초마다 새로운 줄을 만들지 않고 <strong>기존에 출력된 시간 위에 새로운 시간을 덮어쓰게</strong> 되어 디지털시계처럼 작동합니다.</li>
+<li><strong><code>flush=True</code></strong>: 출력 버퍼를 강제로 비워 실시간으로 화면에 글자가 나타나도록 보장합니다.</li>
+<li><strong><code>try-except KeyboardInterrupt</code></strong>: 무한 루프가 돌다가 사용자가 터미널에서 <code>Ctrl + C</code>를 누르면 깔끔하게 작별 인사를 건네며 종료됩니다.</li>
+</ul>
+<hr>
+<h2 id="실행-화면"><a class="header" href="#실행-화면">실행 화면</a></h2>
+<pre><code class="language-powershell">PS E:\test\pyjisa&gt; python clock.py
+현재 시간: 2026-06-21 03:18:47
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../samples/transform.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
 
-                            <a rel="next prefetch" href="samples/catchnumber.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../samples/gawibawibo.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -191,8 +236,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../samples/transform.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
 
-                    <a rel="next prefetch" href="samples/catchnumber.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../samples/gawibawibo.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -212,13 +260,13 @@
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
 
