@@ -1,6 +1,6 @@
 # Summary
 
-- [AI로 만든 파이썬 프로그램들](./samples/python.md)
+- [AI로 만든 파이썬 프로그램들](./python.md)
   - [숫자맞추기 게임](./samples/catchnumber.md)
   - [현재 시각](./samples/clock.md)
   - [가위바위보 게임](./samples/gawibawibo.md)
