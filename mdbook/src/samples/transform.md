@@ -72,7 +72,7 @@ ModuleNotFoundError: No module named 'pyproj'
 gemini가 대답 제일 첫 줄에 언급한 pyproj 라이브러리를 설치한다.
 
 ```
-pip install proj
+pip install pyproj
 ```
 
 위 방법으로 라이브러리 설치하고 다시 실행하기
